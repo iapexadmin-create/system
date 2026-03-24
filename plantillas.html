@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plantillas editables | IAPEX AI SYSTEM</title>
+<meta name="description" content="Plantillas editables para arrancar antes, gastar menos y usar o revender con mucha más velocidad." />
+<meta name="theme-color" content="#c40000" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<style>
+:root{
+  --bg:#070707;
+  --bg2:#120202;
+  --bg3:#1a0505;
+  --text:#ffffff;
+  --muted:#d7d7d7;
+  --soft:#a9a9a9;
+  --red:#ff2d2d;
+  --red2:#b70000;
+  --line:rgba(255,255,255,.10);
+  --card:rgba(255,255,255,.05);
+  --card2:rgba(255,255,255,.035);
+  --shadow:0 24px 70px rgba(0,0,0,.45);
+  --radius:24px;
+  --max:1240px;
+  --ok:#76f0ae;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 14% 14%, rgba(255,0,0,.18), transparent 24%),
+    radial-gradient(circle at 84% 14%, rgba(255,0,0,.14), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(255,0,0,.10), transparent 26%),
+    linear-gradient(180deg,#090909 0%,#130303 45%,#070707 100%);
+  overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.11;
+  background-image:
+    linear-gradient(rgba(255,40,40,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,40,40,.14) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at center, black 35%, transparent 92%);
+}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+.container{width:min(var(--max),calc(100% - 32px));margin:auto}
+.topbar{
+  background:linear-gradient(90deg, rgba(255,41,41,.18), rgba(255,255,255,.04), rgba(255,41,41,.18));
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:13px;
+}
+.topbar .container{
+  display:flex;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;padding:10px 0;
+}
+header{
+  position:sticky;top:0;z-index:50;background:rgba(8,8,8,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:900;letter-spacing:.5px}
+.brand img{width:44px;height:44px;object-fit:contain;border-radius:12px}
+.nav-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.nav-links a{color:#f2f2f2;font-size:15px;opacity:.94}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);font-size:14px;
+  box-shadow:0 0 22px rgba(255,31,31,.18);backdrop-filter:blur(8px)
+}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 12px rgba(255,38,38,.8)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:18px;
+  font-weight:800;transition:.25s ease;cursor:pointer;border:none
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,#ff2c2c,#b80000);color:#fff;box-shadow:0 0 28px rgba(255,31,31,.26)}
+.btn-secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(255,38,38,.28);color:#fff}
+.hero{padding:82px 0 44px}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:42px}
+h1{
+  font-size:clamp(42px,6vw,78px);line-height:.94;letter-spacing:-2px;margin:16px 0 18px;max-width:780px
+}
+h2.section-title{font-size:clamp(30px,4vw,52px);line-height:1;letter-spacing:-1.2px;margin:0 0 16px}
+.hero p,.section-sub{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:840px;line-height:1.6;margin:0 0 28px}
+.accent{color:#ff3a3a}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.trust-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.trust-chip{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);font-size:14px
+}
+.hero-bullets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.mini-card{
+  background:var(--card);border:1px solid var(--line);padding:18px;border-radius:18px;backdrop-filter:blur(8px)
+}
+.mini-card b{display:block;font-size:24px;margin-bottom:6px}
+.visual-wrap{position:relative;display:grid;place-items:center;min-height:560px}
+.glow{position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle, rgba(255,31,31,.34), rgba(255,31,31,.07), transparent 68%);filter:blur(12px)}
+.panel{
+  position:relative;width:min(100%,580px);padding:18px;border-radius:30px;background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.45), 0 0 24px rgba(255,31,31,.14);backdrop-filter:blur(12px)
+}
+.panel-box{
+  border-radius:24px;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:rgba(255,255,255,.03)
+}
+.panel-top{
+  display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)
+}
+.dots{display:flex;gap:8px}
+.dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
+.panel-content{padding:16px}
+.chat{display:grid;gap:12px}
+.msg{padding:14px 16px;border-radius:18px;font-size:15px;line-height:1.5;max-width:88%;border:1px solid rgba(255,255,255,.08)}
+.msg.user{justify-self:end;background:rgba(255,255,255,.08)}
+.msg.bot{justify-self:start;background:linear-gradient(135deg, rgba(255,31,31,.18), rgba(255,31,31,.08))}
+.stats{display:grid;gap:12px}
+.stat{
+  display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:16px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)
+}
+.stat b{font-size:18px}
+section{padding:74px 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:24px;box-shadow:var(--shadow)
+}
+.card h3{margin:0 0 10px;font-size:24px}
+.card p{margin:0;color:var(--muted);line-height:1.7}
+.icon{
+  width:54px;height:54px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;font-size:22px;
+  background:linear-gradient(135deg, rgba(255,31,31,.28), rgba(255,31,31,.08));border:1px solid rgba(255,31,31,.2);box-shadow:0 0 18px rgba(255,31,31,.14)
+}
+.tag{
+  display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);font-size:12px;margin-bottom:12px
+}
+.price{font-size:54px;font-weight:900;line-height:1;margin:14px 0 8px}
+.month{font-size:17px;color:var(--muted);margin-bottom:18px}
+.list,.feature-list{display:grid;gap:10px;margin:18px 0 24px}
+.list span,.feature-list span{display:flex;gap:10px;align-items:flex-start;line-height:1.55;color:#fff}
+.highlight-box{
+  padding:28px;border-radius:28px;background:linear-gradient(135deg, rgba(255,31,31,.16), rgba(255,255,255,.04));
+  border:1px solid rgba(255,31,31,.22);box-shadow:0 0 28px rgba(255,31,31,.14)
+}
+.testimonial{
+  padding:20px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)
+}
+.testimonial b{display:block;margin-bottom:8px}
+.template-card{position:relative;overflow:hidden}
+.template-card::after{
+  content:"";position:absolute;inset:auto -30% -40% auto;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,31,31,.18), transparent 70%);pointer-events:none
+}
+.template-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}
+.template-price{font-size:38px;font-weight:900;white-space:nowrap}
+.offer-box{
+  margin-top:22px;padding:30px;border-radius:28px;background:linear-gradient(135deg, rgba(255,31,31,.16), rgba(255,255,255,.04));
+  border:1px solid rgba(255,31,31,.22);box-shadow:0 0 28px rgba(255,31,31,.14)
+}
+.offer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+.offer-price{font-size:66px;font-weight:900;line-height:1;margin:10px 0}
+.strike{color:#b0b0b0;text-decoration:line-through;font-size:22px}
+.faq{display:grid;gap:14px}
+details{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:18px 20px}
+summary{cursor:pointer;font-weight:800}
+details p{margin:14px 0 0;color:var(--muted);line-height:1.65}
+.final-cta{
+  text-align:center;padding:40px;border-radius:30px;background:linear-gradient(180deg, rgba(255,31,31,.12), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.09);box-shadow:var(--shadow)
+}
+footer{padding:32px 0 92px;color:#d6d6d6;text-align:center;font-size:14px}
+.veronica-float{
+  position:fixed;right:18px;bottom:18px;z-index:60;background:linear-gradient(135deg,#ff2c2c,#b80000);color:#fff;
+  border-radius:999px;padding:14px 18px;box-shadow:0 12px 32px rgba(0,0,0,.35);font-weight:800
+}
+.page-hero{
+  padding:64px 0 24px;
+}
+.page-hero h1{max-width:920px}
+@media (max-width:1100px){
+  .hero-grid,.grid-4,.grid-3,.grid-2,.offer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .hero-grid,.grid-4,.grid-3,.grid-2,.offer-grid{grid-template-columns:1fr}
+  .nav-links a:not(.btn){display:none}
+  .hero{padding-top:56px}
+  .visual-wrap{min-height:auto}
+  .hero-bullets{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .container{width:min(var(--max),calc(100% - 22px))}
+  h1{letter-spacing:-1px}
+  .cta-row{flex-direction:column}
+  .btn{width:100%}
+  .brand span:last-child{display:none}
+  .offer-price,.price{font-size:46px}
+  .veronica-float{left:12px;right:12px;bottom:12px;text-align:center}
+  footer{padding-bottom:108px}
+}
+
+.urgency-bar{margin-top:18px;padding:16px 18px;border-radius:22px;background:linear-gradient(135deg, rgba(255,45,45,.16), rgba(255,255,255,.04));border:1px solid rgba(255,45,45,.25); box-shadow:0 0 24px rgba(255,45,45,.14)}
+.countdown{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.count-box{min-width:76px;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);text-align:center}
+.count-box b{display:block;font-size:24px}
+.muted-mini{font-size:12px;color:var(--soft)}
+.logo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.logo-pill{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-align:center;color:#f1f1f1;font-weight:700}
+.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.result-box{padding:20px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.result-box b{display:block;font-size:30px;margin-bottom:8px}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.compare-card{padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03))}
+.compare-card.good{border-color:rgba(255,45,45,.25);box-shadow:0 0 24px rgba(255,45,45,.10)}
+.activity-pop{position:fixed;left:18px;bottom:18px;z-index:58;max-width:320px;background:linear-gradient(180deg, rgba(20,20,20,.94), rgba(20,20,20,.86));border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:14px 16px;box-shadow:0 18px 40px rgba(0,0,0,.35);backdrop-filter:blur(10px);display:none}
+.activity-pop.show{display:block;animation:fadeInUp .35s ease}
+.activity-pop b{display:block;margin-bottom:4px}
+.activity-pop .mini{font-size:12px;color:var(--soft)}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:57;background:rgba(8,8,8,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:10px 0}
+.sticky-cta .inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sticky-cta .copy{font-size:14px;color:#f0f0f0}
+.hero-proof{display:grid;gap:12px;margin-top:18px}
+.proof-line{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.proof-line b{font-size:16px}
+.hot{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,45,45,.14);border:1px solid rgba(255,45,45,.28);font-size:12px;font-weight:800}
+.small-note{font-size:14px;color:var(--muted)}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:1100px){.logo-strip,.result-grid,.comparison{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.logo-strip,.result-grid,.comparison{grid-template-columns:1fr}}
+@media (max-width:640px){.sticky-cta .inner{flex-direction:column;align-items:stretch}.activity-pop{left:12px;right:12px;max-width:none;bottom:82px}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span>⚡ Sistemas de automatización con IA</span>
+    <span>•</span>
+    <span>💬 Verónica resuelve dudas y cierra contigo</span>
+    <span>•</span>
+    <span>🔥 Servicios completos + plantillas editables</span>
+  </div>
+</div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo-docs.png" alt="Logo IAPEX" />
+      <span>IAPEX</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="plantillas.html" style="color:#ffb0b0">Plantillas</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn btn-primary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">Hablar con Verónica</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="page-hero"><div class="container"><div class="hot">🔥 ENTRADA RÁPIDA Y FÁCIL</div><h1>Plantillas para <span class="accent">arrancar antes, gastar menos y tener base lista</span>.</h1><p class="section-sub">Son la opción ideal para quien quiere una entrada más rápida: usarlas en su negocio o revenderlas como marca blanca sin empezar desde cero.</p><div class="urgency-bar"><div><b>Pack recomendado activo</b></div><div class="small-note">Ahora mismo el pack es la opción más fuerte si quieres más valor y más recorrido con una sola compra.</div></div></div></section>
+<section><div class="container grid-4"><div class="card template-card"><span class="tag">Plantilla 01</span><img src="assets/icon-logo.png" alt="Recepcionista IA" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px;border-radius:18px;"><div class="template-top"><div><h3>Recepcionista IA</h3><p>Para responder clientes y tener una atención inicial más rápida y ordenada.</p></div><div class="template-price">49€</div></div><div class="cta-row"><a class="btn btn-primary" href="https://buy.stripe.com/test_placeholder_49a" target="_blank" rel="noopener">Comprar</a><a class="btn btn-secondary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20info%20de%20la%20plantilla%20Recepcionista%20IA" target="_blank" rel="noopener">Más info</a></div></div><div class="card template-card"><span class="tag">Plantilla 02</span><img src="assets/logo-social.png" alt="Recordatorios" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px;border-radius:18px;"><div class="template-top"><div><h3>Recordatorios</h3><p>Para no dejar citas o contactos caer por falta de seguimiento.</p></div><div class="template-price">49€</div></div><div class="cta-row"><a class="btn btn-primary" href="https://buy.stripe.com/test_placeholder_49b" target="_blank" rel="noopener">Comprar</a><a class="btn btn-secondary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20info%20de%20la%20plantilla%20Recordatorios" target="_blank" rel="noopener">Más info</a></div></div><div class="card template-card"><span class="tag">Plantilla 03</span><img src="assets/logo-docs.png" alt="Redes sociales" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px;border-radius:18px;"><div class="template-top"><div><h3>Redes sociales</h3><p>Para generar ideas, copies y contenido con más constancia y menos esfuerzo.</p></div><div class="template-price">49€</div></div><div class="cta-row"><a class="btn btn-primary" href="https://buy.stripe.com/test_placeholder_49c" target="_blank" rel="noopener">Comprar</a><a class="btn btn-secondary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20info%20de%20la%20plantilla%20Redes%20Sociales" target="_blank" rel="noopener">Más info</a></div></div><div class="card template-card"><span class="tag">Plantilla 04</span><img src="assets/favicon.png" alt="Captura de leads" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px;border-radius:18px;"><div class="template-top"><div><h3>Captura de leads</h3><p>Para organizar mejor contactos y oportunidades desde el principio.</p></div><div class="template-price">49€</div></div><div class="cta-row"><a class="btn btn-primary" href="https://buy.stripe.com/test_placeholder_49d" target="_blank" rel="noopener">Comprar</a><a class="btn btn-secondary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20info%20de%20la%20plantilla%20Captura%20de%20Leads" target="_blank" rel="noopener">Más info</a></div></div></div><div class="container"><div class="offer-box"><div class="offer-grid"><div><div class="hot">🔥 MEJOR COMPRA</div><h2 class="section-title" style="margin-top:18px">Pack de 4 plantillas por 99€</h2><p class="section-sub" style="margin:0">La opción con más fuerza para quien quiere más valor, más base y más opciones con una sola compra.</p><div style="margin-top:16px"><span class="strike">196€</span></div><div class="feature-list"><span>✅ Las 4 plantillas incluidas</span><span>✅ Mejor relación valor / precio</span><span>✅ Perfectas para uso propio y reventa</span></div></div><div><div class="offer-price">99€</div><div class="list"><span>💳 Stripe online</span><span>💬 Ayuda de Verónica por WhatsApp</span></div><div class="cta-row"><a class="btn btn-primary" href="https://buy.stripe.com/test_placeholder_99" target="_blank" rel="noopener">Comprar pack</a><a class="btn btn-secondary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20m%C3%A1s%20info%20del%20pack%20de%2099%E2%82%AC" target="_blank" rel="noopener">Más info</a></div></div></div></div><p style="color:#aaa;margin-top:14px">Sustituye los enlaces placeholder de Stripe por los tuyos reales antes de publicar.</p></div></section>
+<section><div class="container comparison"><div class="compare-card"><h3>Empezar desde cero</h3><div class="feature-list"><span>❌ Más tiempo</span><span>❌ Más bloqueo</span><span>❌ Más trabajo técnico</span></div></div><div class="compare-card good"><h3>Entrar con plantillas</h3><div class="feature-list"><span>✅ Más rapidez para arrancar</span><span>✅ Base ya lista</span><span>✅ Más recorrido por menos dinero</span></div></div></div></section>
+<section><div class="container grid-2"><div class="card"><h3>Para tu negocio</h3><div class="feature-list"><span>✅ Entras antes</span><span>✅ Ahorras tiempo de arranque</span><span>✅ Tienes una base lista para adaptar</span></div></div><div class="card"><h3>Para revender</h3><div class="feature-list"><span>✅ Menos trabajo técnico</span><span>✅ Más rapidez para empaquetar</span><span>✅ Mejor margen si lo vendes bien</span></div></div></div></section>
+<section><div class="container grid-3"><div class="testimonial"><b>“Compré una, funcionó bien y luego fui a por el pack.”</b><p>Negocio local</p></div><div class="testimonial"><b>“Me ayudaron a mover ofertas con mi propia marca.”</b><p>Freelancer</p></div><div class="testimonial"><b>“Lo mejor fue avanzar rápido sin empezar de cero.”</b><p>Emprendedor</p></div></div></section>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> IAPEX AI SYSTEM · WhatsApp: 614 437 971 · Email: iapexadmin@gmail.com</div>
+</footer>
+<div id="activityPop" class="activity-pop"></div>
+<div class="sticky-cta">
+  <div class="container inner">
+    <div class="copy">Empieza hoy con un sistema que ahorra tiempo y te ayuda a vender mejor.</div>
+    <div class="cta-row" style="margin:0">
+      <a class="btn btn-primary" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20empezar" target="_blank" rel="noopener">💬 Hablar con Verónica</a>
+    </div>
+  </div>
+</div>
+<a class="veronica-float" href="https://wa.me/34614437971?text=Hola%20Ver%C3%B3nica%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">💬 Verónica</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const endDate = new Date(); endDate.setDate(endDate.getDate()+5); endDate.setHours(23,59,59,999);
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = endDate.getTime() - now;
+  const ids = {days:'00', hours:'00', minutes:'00', seconds:'00'};
+  if(distance > 0){
+    ids.days = String(Math.floor(distance/(1000*60*60*24))).padStart(2,'0');
+    ids.hours = String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+    ids.minutes = String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
+    ids.seconds = String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
+  }
+  Object.entries(ids).forEach(([k,v])=>{ const el=document.getElementById(k); if(el) el.textContent=v; });
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+const activity = document.getElementById('activityPop');
+if(activity){
+  const messages = [
+    ['Un negocio local', 'ha pedido información sobre automatización de WhatsApp'],
+    ['Un emprendedor', 'está revisando el pack completo de plantillas'],
+    ['Una marca personal', 'ha abierto la página de servicios completos'],
+    ['Un cliente', 'ha preguntado a Verónica por el Pack Growth'],
+    ['Una empresa', 'está valorando automatizar atención y seguimiento']
+  ];
+  let idx = 0;
+  function showActivity(){
+    const data = messages[idx % messages.length];
+    activity.innerHTML = '<b>' + data[0] + '</b><div>' + data[1] + '</div><div class="mini">Actividad reciente</div>';
+    activity.classList.add('show');
+    setTimeout(()=>activity.classList.remove('show'), 4200);
+    idx++;
+  }
+  setTimeout(showActivity, 1800);
+  setInterval(showActivity, 9000);
+}
+</script>
+
+
+</body>
+</html>
